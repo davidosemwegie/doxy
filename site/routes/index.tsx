@@ -52,7 +52,7 @@ export default define.page(async function Home(_ctx) {
         <header class="mb-20 animate-fade-in">
           {/* ASCII-style logo */}
           <div class="mb-8 overflow-x-auto">
-            <pre class="text-[8px] sm:text-[10px] leading-none glow-cyan select-none whitespace-pre" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+            <pre class="text-[8px] sm:text-[10px] leading-none glow-cyan select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
@@ -73,7 +73,6 @@ export default define.page(async function Home(_ctx) {
             <span class="tag">{installs.toLocaleString()} installs</span>
             <span class="tag">★ {stars.toLocaleString()}</span>
             <span class="tag">v1.1.0</span>
-            <span class="tag">free</span>
           </div>
         </header>
 
