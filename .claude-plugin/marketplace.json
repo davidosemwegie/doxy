@@ -1,0 +1,19 @@
+{
+  "name": "doxy",
+  "owner": {
+    "name": "David Osemwegie"
+  },
+  "metadata": {
+    "description": "Generate Claude Code skills from documentation websites",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "doxy",
+      "source": "./",
+      "description": "One-command documentation-to-skills generator. Point it at any docs site and it creates Claude Code skills automatically.",
+      "category": "automation",
+      "tags": ["documentation", "skills", "generator", "automation", "docs"]
+    }
+  ]
+}

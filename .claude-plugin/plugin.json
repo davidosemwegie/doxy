@@ -1,0 +1,10 @@
+{
+  "name": "doxy",
+  "version": "1.0.0",
+  "description": "Generate Claude Code skills from documentation websites",
+  "author": {
+    "name": "David Osemwegie"
+  },
+  "license": "MIT",
+  "keywords": ["documentation", "skills", "generator", "automation"]
+}
