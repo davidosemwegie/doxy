@@ -50,11 +50,11 @@ export default define.page(async function Home(_ctx) {
       <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         {/* Hero Section */}
         <header class="mb-16 animate-fade-in">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
             {/* Logo and tagline */}
             <div>
               <div class="mb-4 overflow-x-auto">
-                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left border-0 bg-transparent p-0 m-0" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
@@ -67,45 +67,18 @@ export default define.page(async function Home(_ctx) {
             </div>
 
             {/* Description */}
-            <p class="text-xl sm:text-2xl leading-relaxed text-[var(--text-secondary)] max-w-md">
+            <p class="text-base sm:text-lg leading-relaxed text-[var(--text-secondary)] max-w-sm">
               Transform any documentation site into Claude Code skills. Point it at docs, get instant knowledge.
             </p>
           </div>
         </header>
 
-        {/* Install + Agents Row */}
+        {/* Install */}
         <section class="mb-16 animate-fade-in animate-delay-1">
-          <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
-            {/* Install */}
-            <div class="flex-1">
-              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
-                Install in one command
-              </p>
-              <InstallCommand />
-            </div>
-
-            {/* Works with */}
-            <div>
-              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
-                Available for these agents
-              </p>
-              <div class="flex items-center gap-6">
-                {[
-                  { name: "Claude Code", icon: "◈" },
-                  { name: "Cursor", icon: "◇" },
-                  { name: "Windsurf", icon: "◆" },
-                ].map((editor) => (
-                  <span
-                    key={editor.name}
-                    class="text-2xl text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-default"
-                    title={editor.name}
-                  >
-                    {editor.icon}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
+            Install in one command
+          </p>
+          <InstallCommand />
         </section>
 
         {/* How it works */}

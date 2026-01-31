@@ -86,8 +86,15 @@ body {
 }
 
 /* Code styling */
-code {
+code, pre {
   font-family: 'JetBrains Mono', monospace;
+}
+
+pre {
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 /* Link styling */
