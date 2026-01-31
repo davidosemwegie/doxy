@@ -50,27 +50,20 @@ export default define.page(async function Home(_ctx) {
       <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         {/* Hero Section */}
         <header class="mb-16 animate-fade-in">
-          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
-            {/* Logo and tagline */}
-            <div>
-              <div class="mb-4">
-                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+          <div class="mb-4">
+            <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
 ██████╔╝╚██████╔╝██╔╝ ██╗   ██║
 ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝`}</pre>
-              </div>
-              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)]">
-                docs → skills
-              </p>
-            </div>
-
-            {/* Description */}
-            <p class="text-base sm:text-lg leading-relaxed text-[var(--text-secondary)] max-w-sm">
-              Transform any documentation site into Claude Code skills. Point it at docs, get instant knowledge.
-            </p>
           </div>
+          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+            docs → skills
+          </p>
+          <p class="text-base sm:text-lg leading-relaxed text-[var(--text-secondary)] max-w-lg">
+            Transform any documentation site into Claude Code skills. Point it at docs, get instant knowledge.
+          </p>
         </header>
 
         {/* Install */}
