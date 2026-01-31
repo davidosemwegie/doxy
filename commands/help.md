@@ -13,8 +13,9 @@ COMMANDS
   /doxy <url>              Generate skills from a documentation URL
   /doxy:init               Interactive setup for a new documentation skill
   /doxy:list               List all doxy-generated skills
-  /doxy:update <name>      Refresh a skill by re-crawling its source URL
+  /doxy:update <name> [url]  Refresh a skill (optionally with new URL)
   /doxy:delete <name>      Delete a skill (with confirmation)
+  /doxy:adopt <name> <url>   Add manifest to existing skill folder
   /doxy:help               Show this help message
 
 EXAMPLES
@@ -26,6 +27,12 @@ EXAMPLES
 
   /doxy:update react-docs
       Re-crawl React documentation to refresh skills
+
+  /doxy:update react-docs https://new-react.dev/docs
+      Update with a new documentation URL (if docs moved)
+
+  /doxy:adopt old-skill https://example.com/docs
+      Add manifest to a skill created before v1.1.0
 
   /doxy:list
       Show all skills with their source URLs

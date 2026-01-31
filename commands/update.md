@@ -1,13 +1,21 @@
 ---
 description: Refresh a documentation skill by re-crawling its source
-argument-hint: <skill-name>
+argument-hint: <skill-name> [new-url]
 ---
 
-Re-crawl the documentation for an existing skill.
+Re-crawl the documentation for an existing skill. Optionally provide a new URL if the docs have moved.
 
 ## Input
 
-The skill name is provided as $ARGUMENTS. If no argument is provided, show available skills and ask the user to choose one.
+Parse $ARGUMENTS to extract:
+1. The skill name (first argument, required)
+2. Optionally, a new source URL (second argument)
+
+Examples:
+- `/doxy:update react-docs` - refresh using stored URL
+- `/doxy:update react-docs https://new-docs.react.dev` - update with new URL
+
+If no arguments provided, show available skills.
 
 ## Step 1: Validate Skill Exists
 
@@ -22,21 +30,41 @@ If $ARGUMENTS is provided:
 2. If file doesn't exist, tell user the skill wasn't found and list available skills
 3. STOP if not found
 
-## Step 2: Get Source URL
+## Step 2: Determine Source URL
 
-Read the manifest file and extract the `source_url`.
+Read the manifest file to get the existing `source_url`.
+
+**If a new URL was provided in arguments:**
+- Use the new URL instead of the stored one
+- Note that the manifest will be updated with this new URL
+
+**If no new URL was provided:**
+- Use the `source_url` from the manifest
 
 ## Step 3: Confirm Update
 
 Use AskUserQuestion:
 
-Question: "Ready to refresh '[skill-name]' from [source_url]. This will regenerate all skills in this folder. Continue?"
+If using a NEW URL:
+- Question: "Ready to refresh '[skill-name]' from NEW URL: [new-url]. This will update the stored URL and regenerate all skills. Continue?"
+
+If using the STORED URL:
+- Question: "Ready to refresh '[skill-name]' from [source_url]. This will regenerate all skills in this folder. Continue?"
+
 Header: "Confirm"
 Options:
 - "Yes, update" (Proceed with the refresh)
 - "No, cancel" (Cancel the operation)
 
 If user cancels, STOP.
+
+## Step 3b: Update Manifest URL (if new URL provided)
+
+If a new URL was provided, update the manifest with the new source_url:
+1. Read the existing manifest
+2. Update `source_url` to the new URL
+3. Update `last_updated` to current timestamp
+4. Write the updated manifest back
 
 ## Step 4: Delete Existing Skills (Keep Manifest)
 

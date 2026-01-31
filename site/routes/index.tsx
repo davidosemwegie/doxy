@@ -72,7 +72,7 @@ export default define.page(async function Home(_ctx) {
           <div class="flex items-center gap-4 text-sm text-[var(--text-muted)]">
             <span class="tag">{installs.toLocaleString()} installs</span>
             <span class="tag">★ {stars.toLocaleString()}</span>
-            <span class="tag">v1.0.0</span>
+            <span class="tag">v1.1.0</span>
             <span class="tag">free</span>
           </div>
         </header>
@@ -197,6 +197,7 @@ export default define.page(async function Home(_ctx) {
               { cmd: "/doxy:init", desc: "Interactive setup wizard" },
               { cmd: "/doxy:list", desc: "List all skills" },
               { cmd: "/doxy:update <name>", desc: "Refresh from source" },
+              { cmd: "/doxy:adopt <name> <url>", desc: "Add manifest to existing" },
               { cmd: "/doxy:delete <name>", desc: "Remove a skill" },
               { cmd: "/doxy:help", desc: "Show help" },
             ].map((item) => (

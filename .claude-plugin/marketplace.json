@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Generate Claude Code skills from documentation websites",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {

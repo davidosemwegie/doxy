@@ -41,8 +41,9 @@ Or manually add via Claude Code:
 | `/doxy <url>` | Generate skills from a documentation URL |
 | `/doxy:init` | Interactive setup - asks for name and URL |
 | `/doxy:list` | List all doxy-generated skills |
-| `/doxy:update <name>` | Refresh a skill by re-crawling its source |
+| `/doxy:update <name> [url]` | Refresh a skill (optionally with new URL) |
 | `/doxy:delete <name>` | Delete a skill (with confirmation) |
+| `/doxy:adopt <name> <url>` | Add manifest to existing skill folder |
 | `/doxy:help` | Show command reference |
 
 ## What It Does
