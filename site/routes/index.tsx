@@ -196,7 +196,7 @@ export default define.page(async function Home(_ctx) {
               { cmd: "/doxy <url>", desc: "Generate skills from docs" },
               { cmd: "/doxy:init", desc: "Interactive setup wizard" },
               { cmd: "/doxy:list", desc: "List all skills" },
-              { cmd: "/doxy:update <name>", desc: "Refresh from source" },
+              { cmd: "/doxy:update <name> [url]", desc: "Refresh from source" },
               { cmd: "/doxy:adopt <name> <url>", desc: "Add manifest to existing" },
               { cmd: "/doxy:delete <name>", desc: "Remove a skill" },
               { cmd: "/doxy:help", desc: "Show help" },
