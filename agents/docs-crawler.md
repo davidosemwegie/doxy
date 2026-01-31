@@ -21,11 +21,19 @@ You are a documentation crawler agent. Your task is to crawl a documentation web
 You will receive:
 1. A documentation URL
 2. A skill folder name (either a custom name or "auto" for auto-detection)
+3. Optionally, a note that this is an UPDATE operation
 
 Parse these from your task prompt. The format is:
 ```
 Crawl and generate skills from: [URL]
 Skill folder name: [folder-name]
+```
+
+Or for updates:
+```
+Crawl and generate skills from: [URL]
+Skill folder name: [folder-name]
+This is an UPDATE - manifest already exists, just update last_updated timestamp.
 ```
 
 ## Process
@@ -68,17 +76,26 @@ Use Glob to check if `.claude-plugin/skills/[folder-name]/` already exists:
 pattern: .claude-plugin/skills/[folder-name]/**/*
 ```
 
+**If this is an UPDATE operation** (prompt contains "This is an UPDATE"):
+- Verify the manifest exists by trying to read `.claude-plugin/skills/[folder-name]/doxy-manifest.json`
+- If the manifest doesn't exist:
+  1. Report that the skill folder or manifest is missing
+  2. Suggest running `/doxy [url]` to create a new skill instead
+  3. STOP processing
+- If the manifest exists, proceed directly to Step 4
+
+**If this is a NEW operation:**
 If the folder exists and contains files:
 1. Report that the folder already exists
 2. List the existing skills in that folder
 3. STOP processing - do not overwrite existing skills
 4. Suggest the user either:
    - Choose a different folder name
-   - Manually delete the existing folder if they want to regenerate
+   - Use `/doxy:update [folder-name]` to refresh existing skills
 
-### Step 4: Create Skills Directory
+### Step 4: Create Skills Directory and Manifest
 
-Only proceed if the folder doesn't exist or is empty.
+Only proceed if the folder doesn't exist or is empty (or this is an UPDATE).
 
 Create a parent folder:
 ```bash
@@ -86,6 +103,32 @@ mkdir -p .claude-plugin/skills/[folder-name]
 ```
 
 Example: For folder name "webgl" → `.claude-plugin/skills/webgl/`
+
+#### Create or Update Manifest
+
+**For NEW operations:** Create `.claude-plugin/skills/[folder-name]/doxy-manifest.json`:
+```json
+{
+  "name": "[folder-name]",
+  "source_url": "[the documentation URL from input]",
+  "created_at": "[current ISO 8601 timestamp]",
+  "last_updated": "[current ISO 8601 timestamp]"
+}
+```
+
+**For UPDATE operations:**
+1. Use the Read tool to read the existing manifest at `.claude-plugin/skills/[folder-name]/doxy-manifest.json`
+2. Parse the JSON to extract the existing `name`, `source_url`, and `created_at` values
+3. Only update the `last_updated` field with the current ISO 8601 timestamp
+4. Use the Write tool to save the updated manifest:
+```json
+{
+  "name": "[existing name from step 2]",
+  "source_url": "[existing source_url from step 2]",
+  "created_at": "[existing created_at from step 2]",
+  "last_updated": "[current ISO 8601 timestamp]"
+}
+```
 
 ### Step 5: Process Each Documentation Page
 

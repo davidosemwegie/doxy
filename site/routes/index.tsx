@@ -182,6 +182,35 @@ export default define.page(async function Home(_ctx) {
           </div>
         </section>
 
+        {/* Commands */}
+        <section class="mb-20 animate-fade-in animate-delay-4">
+          <h2 class="flex items-center gap-3 mb-8">
+            <span class="text-[var(--accent-cyan)]">//</span>
+            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
+              Commands
+            </span>
+          </h2>
+
+          <div class="space-y-3">
+            {[
+              { cmd: "/doxy <url>", desc: "Generate skills from docs" },
+              { cmd: "/doxy:init", desc: "Interactive setup wizard" },
+              { cmd: "/doxy:list", desc: "List all skills" },
+              { cmd: "/doxy:update <name>", desc: "Refresh from source" },
+              { cmd: "/doxy:delete <name>", desc: "Remove a skill" },
+              { cmd: "/doxy:help", desc: "Show help" },
+            ].map((item) => (
+              <div
+                key={item.cmd}
+                class="flex items-center justify-between p-3 terminal-box hover-glow transition-all"
+              >
+                <code class="text-[var(--accent-lime)] text-sm">{item.cmd}</code>
+                <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Supported Editors */}
         <section class="mb-20 animate-fade-in animate-delay-5">
           <h2 class="flex items-center gap-3 mb-8">

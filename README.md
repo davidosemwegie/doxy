@@ -34,12 +34,24 @@ Or manually add via Claude Code:
 /doxy https://animejs.com/documentation
 ```
 
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/doxy <url>` | Generate skills from a documentation URL |
+| `/doxy:init` | Interactive setup - asks for name and URL |
+| `/doxy:list` | List all doxy-generated skills |
+| `/doxy:update <name>` | Refresh a skill by re-crawling its source |
+| `/doxy:delete <name>` | Delete a skill (with confirmation) |
+| `/doxy:help` | Show command reference |
+
 ## What It Does
 
 1. Fetches the documentation page and extracts navigation structure
 2. Visits each documentation page
 3. Generates Claude Code skills from the content
 4. Saves skills to `.claude-plugin/skills/[library-name]/`
+5. Creates a manifest with source URL for easy updates
 
 ## Output
 
