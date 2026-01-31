@@ -53,8 +53,8 @@ export default define.page(async function Home(_ctx) {
           <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
             {/* Logo and tagline */}
             <div>
-              <div class="mb-4 overflow-x-auto">
-                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left border-0 bg-transparent p-0 m-0" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+              <div class="mb-4">
+                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝

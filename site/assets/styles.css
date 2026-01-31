@@ -91,10 +91,12 @@ code, pre {
 }
 
 pre {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 0;
+  border: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Link styling */
