@@ -46,8 +46,8 @@ if command -v git &> /dev/null; then
     git clone --depth 1 https://github.com/davidosemwegie/doxy.git "$DOXY_DIR" 2>/dev/null
 else
     # Fallback to curl + tar if git is not available
-    curl -sL https://github.com/davidosemwegie/doxy/archive/main.tar.gz | tar -xz -C "$PLUGINS_DIR"
-    mv "$PLUGINS_DIR/doxy-main" "$DOXY_DIR"
+    curl -sL https://github.com/davidosemwegie/doxy/archive/master.tar.gz | tar -xz -C "$PLUGINS_DIR"
+    mv "$PLUGINS_DIR/doxy-master" "$DOXY_DIR"
 fi
 
 # Remove site directory (not needed for plugin)
@@ -62,7 +62,10 @@ echo ""
 echo "Restart Claude Code to load the plugin."
 echo ""
 echo "Usage:"
-echo "  /doxy https://docs.example.com"
+echo "  /doxy <url>        Generate skills from docs"
+echo "  /doxy:init         Interactive setup"
+echo "  /doxy:list         List all skills"
+echo "  /doxy:help         Show all commands"
 echo ""
 `;
 
