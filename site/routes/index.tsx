@@ -16,8 +16,20 @@ export default define.page(async function Home(_ctx) {
     installs = 42; // placeholder for dev
   }
 
+  // Get GitHub stars
+  let stars = 0;
+  try {
+    const res = await fetch("https://api.github.com/repos/davidosemwegie/doxy");
+    if (res.ok) {
+      const data = await res.json();
+      stars = data.stargazers_count ?? 0;
+    }
+  } catch {
+    // GitHub API not available
+  }
+
   return (
-    <div class="min-h-screen grid-bg">
+    <div class="min-h-screen">
       <Head>
         <title>doxy — docs → skills</title>
         <meta
@@ -59,6 +71,7 @@ export default define.page(async function Home(_ctx) {
           {/* Stats bar */}
           <div class="flex items-center gap-4 text-sm text-[var(--text-muted)]">
             <span class="tag">{installs.toLocaleString()} installs</span>
+            <span class="tag">★ {stars.toLocaleString()}</span>
             <span class="tag">v1.0.0</span>
             <span class="tag">free</span>
           </div>
@@ -200,8 +213,6 @@ export default define.page(async function Home(_ctx) {
           <div class="flex flex-wrap items-center justify-between gap-6">
             <div class="flex gap-6 text-sm">
               <a href="https://github.com/davidosemwegie/doxy">GitHub</a>
-              <a href="/privacy">Privacy</a>
-              <a href="/terms">Terms</a>
             </div>
             <p class="text-sm text-[var(--text-muted)]">
               © 2025{" "}
