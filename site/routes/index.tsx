@@ -36,6 +36,7 @@ export default define.page(async function Home(_ctx) {
           name="description"
           content="Transform any documentation site into Claude Code skills. One command. Instant knowledge."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -45,19 +46,17 @@ export default define.page(async function Home(_ctx) {
       </Head>
 
       {/* Main content */}
-      <main class="max-w-3xl mx-auto px-6 py-20">
+      <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         {/* Hero Section */}
         <header class="mb-20 animate-fade-in">
           {/* ASCII-style logo */}
-          <div class="mb-8">
-            <pre class="text-[10px] leading-none glow-cyan select-none" aria-hidden="true">{`
-    ██████╗  ██████╗ ██╗  ██╗██╗   ██╗
-    ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
-    ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
-    ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
-    ██████╔╝╚██████╔╝██╔╝ ██╗   ██║
-    ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝
-            `}</pre>
+          <div class="mb-8 overflow-x-auto">
+            <pre class="text-[8px] sm:text-[10px] leading-none glow-cyan select-none whitespace-pre" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
+██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
+██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
+██████╔╝╚██████╔╝██╔╝ ██╗   ██║
+╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝`}</pre>
           </div>
 
           {/* Tagline */}
@@ -69,7 +68,7 @@ export default define.page(async function Home(_ctx) {
           </p>
 
           {/* Stats bar */}
-          <div class="flex items-center gap-4 text-sm text-[var(--text-muted)]">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-[var(--text-muted)]">
             <span class="tag">{installs.toLocaleString()} installs</span>
             <span class="tag">★ {stars.toLocaleString()}</span>
             <span class="tag">v1.1.0</span>
@@ -152,13 +151,13 @@ export default define.page(async function Home(_ctx) {
             </span>
           </h2>
 
-          <div class="terminal-box p-6 bracket-corners">
+          <div class="terminal-box p-4 sm:p-6 bracket-corners overflow-x-auto">
             <div class="flex items-center gap-2 mb-4">
               <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
               <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
               <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
             </div>
-            <code class="block text-sm">
+            <code class="block text-xs sm:text-sm whitespace-nowrap">
               <span class="text-[var(--text-muted)]">{">"}</span>{" "}
               <span class="text-[var(--accent-lime)]">/doxy</span>{" "}
               <span class="text-[var(--text-primary)]">
@@ -203,7 +202,7 @@ export default define.page(async function Home(_ctx) {
             ].map((item) => (
               <div
                 key={item.cmd}
-                class="flex items-center justify-between p-3 terminal-box hover-glow transition-all"
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box hover-glow transition-all"
               >
                 <code class="text-[var(--accent-lime)] text-sm">{item.cmd}</code>
                 <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
