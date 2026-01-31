@@ -8,8 +8,9 @@ export default define.page(async function Home(_ctx) {
   try {
     if (typeof Deno !== "undefined" && Deno.openKv) {
       const kv = await Deno.openKv();
-      const result = await kv.get<number>(["installs"]);
-      installs = result.value ?? 0;
+      const result = await kv.get<Deno.KvU64>(["installs"]);
+      // sum() stores as Deno.KvU64, convert to number
+      installs = result.value ? Number(result.value.value) : 0;
     }
   } catch {
     // KV not available in dev mode
