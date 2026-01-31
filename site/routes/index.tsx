@@ -47,65 +47,74 @@ export default define.page(async function Home(_ctx) {
       </Head>
 
       {/* Main content */}
-      <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+      <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         {/* Hero Section */}
-        <header class="mb-20 animate-fade-in">
-          {/* ASCII-style logo */}
-          <div class="mb-8 overflow-x-auto">
-            <pre class="text-[8px] sm:text-[10px] leading-none glow-cyan select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+        <header class="mb-16 animate-fade-in">
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12">
+            {/* Logo and tagline */}
+            <div>
+              <div class="mb-4 overflow-x-auto">
+                <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
 ██████╔╝╚██████╔╝██╔╝ ██╗   ██║
 ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝`}</pre>
-          </div>
+              </div>
+              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)]">
+                docs → skills
+              </p>
+            </div>
 
-          {/* Tagline */}
-          <h1 class="sr-only">doxy</h1>
-          <p class="text-2xl mb-4 tracking-tight">
-            <span class="text-[var(--text-muted)]">docs</span>
-            <span class="glow-cyan mx-3">→</span>
-            <span>skills</span>
-          </p>
-
-          {/* Stats bar */}
-          <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-[var(--text-muted)]">
-            <span class="tag">{installs.toLocaleString()} installs</span>
-            <span class="tag">★ {stars.toLocaleString()}</span>
-            <span class="tag">v1.1.0</span>
+            {/* Description */}
+            <p class="text-xl sm:text-2xl leading-relaxed text-[var(--text-secondary)] max-w-md">
+              Transform any documentation site into Claude Code skills. Point it at docs, get instant knowledge.
+            </p>
           </div>
         </header>
 
-        {/* Description */}
+        {/* Install + Agents Row */}
         <section class="mb-16 animate-fade-in animate-delay-1">
-          <p class="text-lg leading-relaxed text-[var(--text-primary)]">
-            Transform any documentation site into{" "}
-            <span class="glow-lime">Claude Code skills</span>. Point it at docs,
-            get instant, structured knowledge your AI can actually use.
-          </p>
-        </section>
+          <div class="flex flex-col sm:flex-row gap-8 sm:gap-16">
+            {/* Install */}
+            <div class="flex-1">
+              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
+                Install in one command
+              </p>
+              <InstallCommand />
+            </div>
 
-        {/* Install Section */}
-        <section class="mb-20 animate-fade-in animate-delay-2">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-[var(--accent-cyan)]">$</span>
-            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-              Install
-            </span>
+            {/* Works with */}
+            <div>
+              <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
+                Available for these agents
+              </p>
+              <div class="flex items-center gap-6">
+                {[
+                  { name: "Claude Code", icon: "◈" },
+                  { name: "Cursor", icon: "◇" },
+                  { name: "Windsurf", icon: "◆" },
+                ].map((editor) => (
+                  <span
+                    key={editor.name}
+                    class="text-2xl text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-default"
+                    title={editor.name}
+                  >
+                    {editor.icon}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <InstallCommand />
         </section>
 
         {/* How it works */}
-        <section class="mb-20 animate-fade-in animate-delay-3">
-          <h2 class="flex items-center gap-3 mb-8">
-            <span class="text-[var(--accent-cyan)]">//</span>
-            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-              How it works
-            </span>
-          </h2>
+        <section class="mb-16 animate-fade-in animate-delay-2">
+          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+            How it works
+          </p>
 
-          <div class="space-y-6">
+          <div class="space-y-4">
             {[
               {
                 num: "01",
@@ -130,9 +139,9 @@ export default define.page(async function Home(_ctx) {
             ].map((step) => (
               <div
                 key={step.num}
-                class="flex items-start gap-6 p-4 terminal-box hover-glow transition-all"
+                class="flex items-start gap-6 p-4 terminal-box transition-colors"
               >
-                <span class="glow-cyan text-xl font-bold">{step.num}</span>
+                <span class="text-[var(--text-muted)] text-lg font-bold">{step.num}</span>
                 <div>
                   <h3 class="font-bold mb-1">{step.title}</h3>
                   <p class="text-sm text-[var(--text-muted)]">{step.desc}</p>
@@ -143,54 +152,34 @@ export default define.page(async function Home(_ctx) {
         </section>
 
         {/* Usage Example */}
-        <section class="mb-20 animate-fade-in animate-delay-4">
-          <h2 class="flex items-center gap-3 mb-8">
-            <span class="text-[var(--accent-cyan)]">//</span>
-            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-              Usage
-            </span>
-          </h2>
+        <section class="mb-16 animate-fade-in animate-delay-3">
+          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+            Usage
+          </p>
 
-          <div class="terminal-box p-4 sm:p-6 bracket-corners overflow-x-auto">
-            <div class="flex items-center gap-2 mb-4">
-              <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-              <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
-            </div>
-            <code class="block text-xs sm:text-sm whitespace-nowrap">
-              <span class="text-[var(--text-muted)]">{">"}</span>{" "}
-              <span class="text-[var(--accent-lime)]">/doxy</span>{" "}
-              <span class="text-[var(--text-primary)]">
+          <div class="terminal-box p-4 sm:p-6 overflow-x-auto">
+            <code class="block text-sm whitespace-nowrap">
+              <span class="text-[var(--text-muted)]">$</span>{" "}
+              <span class="text-[var(--text-primary)]">/doxy</span>{" "}
+              <span class="text-[var(--text-secondary)]">
                 https://react.dev/reference
               </span>
             </code>
             <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)]">
-              <p>
-                <span class="glow-cyan">→</span> Crawling react.dev...
-              </p>
-              <p>
-                <span class="glow-cyan">→</span> Found 47 documentation pages
-              </p>
-              <p>
-                <span class="glow-cyan">→</span> Generated skills in{" "}
-                <code class="text-[var(--accent-lime)]">
-                  .claude-plugin/skills/react/
-                </code>
-              </p>
+              <p>→ Crawling react.dev...</p>
+              <p>→ Found 47 documentation pages</p>
+              <p>→ Generated skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/react/</span></p>
             </div>
           </div>
         </section>
 
         {/* Commands */}
-        <section class="mb-20 animate-fade-in animate-delay-4">
-          <h2 class="flex items-center gap-3 mb-8">
-            <span class="text-[var(--accent-cyan)]">//</span>
-            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-              Commands
-            </span>
-          </h2>
+        <section class="mb-16 animate-fade-in animate-delay-4">
+          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+            Commands
+          </p>
 
-          <div class="space-y-3">
+          <div class="space-y-2">
             {[
               { cmd: "/doxy <url>", desc: "Generate skills from docs" },
               { cmd: "/doxy:init", desc: "Interactive setup wizard" },
@@ -202,50 +191,31 @@ export default define.page(async function Home(_ctx) {
             ].map((item) => (
               <div
                 key={item.cmd}
-                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box hover-glow transition-all"
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box transition-colors"
               >
-                <code class="text-[var(--accent-lime)] text-sm">{item.cmd}</code>
+                <code class="text-[var(--text-primary)] text-sm">{item.cmd}</code>
                 <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Supported Editors */}
-        <section class="mb-20 animate-fade-in animate-delay-5">
-          <h2 class="flex items-center gap-3 mb-8">
-            <span class="text-[var(--accent-cyan)]">//</span>
-            <span class="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-              Works with
-            </span>
-          </h2>
-
-          <div class="flex flex-wrap gap-4">
-            {[
-              { name: "Claude Code", icon: "◈" },
-              { name: "Cursor", icon: "◇" },
-              { name: "Windsurf", icon: "◆" },
-            ].map((editor) => (
-              <div
-                key={editor.name}
-                class="tag flex items-center gap-3 hover-glow cursor-default"
-              >
-                <span class="glow-cyan">{editor.icon}</span>
-                <span>{editor.name}</span>
-              </div>
-            ))}
+        {/* Stats */}
+        <section class="mb-16 animate-fade-in animate-delay-5">
+          <div class="flex flex-wrap items-center gap-4 text-sm">
+            <span class="tag">{installs.toLocaleString()} installs</span>
+            <span class="tag">★ {stars.toLocaleString()}</span>
+            <span class="tag">v1.1.0</span>
           </div>
         </section>
 
         {/* Footer */}
-        <footer class="pt-12 border-t border-[var(--border-color)]">
+        <footer class="pt-8 border-t border-[var(--border-color)]">
           <div class="flex flex-wrap items-center justify-between gap-6">
-            <div class="flex gap-6 text-sm">
-              <a href="https://github.com/davidosemwegie/doxy">GitHub</a>
-            </div>
+            <a href="https://github.com/davidosemwegie/doxy" class="text-sm">GitHub</a>
             <p class="text-sm text-[var(--text-muted)]">
               © 2025{" "}
-              <a href="https://davidosemwegie.com" class="hover:glow-cyan">
+              <a href="https://davidosemwegie.com">
                 David Osemwegie
               </a>
             </p>
