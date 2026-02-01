@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 /* Import distinctive fonts */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
 
-/* CSS Custom Properties */
+/* CSS Custom Properties - Stone Dark Theme (Cursor-style) */
 :root {
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #111111;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --border-color: #222222;
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
+  --bg-elevated: #212121;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a1a1a1;
+  --text-muted: #6b6b6b;
+  --border-color: #262626;
+  --border-hover: #3a3a3a;
+  --accent: #e8e8e8;
+  --accent-dim: #a1a1a1;
 }
 
 /* Base styles */
@@ -26,10 +30,12 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.6;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
@@ -75,14 +81,17 @@ body {
 .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
 .animate-delay-5 { animation-delay: 0.5s; opacity: 0; }
 
-/* Terminal-style components */
+/* Terminal-style components - Stone Dark */
 .terminal-box {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .terminal-box:hover {
-  border-color: var(--text-muted);
+  border-color: var(--border-hover);
+  background: var(--bg-tertiary);
 }
 
 /* Code styling */
@@ -110,14 +119,22 @@ a:hover {
   color: var(--text-primary);
 }
 
-/* Badge/tag styling */
+/* Badge/tag styling - Stone Dark */
 .tag {
-  background: transparent;
+  background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   padding: 0.5rem 1rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  border-color: var(--border-hover);
   color: var(--text-secondary);
 }
 
@@ -131,6 +148,102 @@ hr {
 
 /* Focus states for accessibility */
 *:focus-visible {
-  outline: 1px solid var(--text-primary);
+  outline: 1px solid var(--text-secondary);
   outline-offset: 2px;
+}
+
+/* ASCII Logo - Stone Dark */
+.ascii-logo {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+/* Step numbers */
+.step-number {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1.125rem;
+  transition: color 0.2s ease;
+}
+
+.terminal-box:hover .step-number {
+  color: var(--text-secondary);
+}
+
+/* Command highlight */
+.command-text {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+/* Scrollbar - Stone Dark */
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Subtle vignette background */
+.gradient-bg {
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, var(--bg-tertiary) 0%, var(--bg-primary) 60%),
+    var(--bg-primary);
+}
+
+/* Button styles - Stone Dark */
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--text-secondary);
+}
+
+/* Section labels - Stone Dark */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* Links - Stone Dark */
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Cursor pointer for interactive elements */
+button, .tag, .terminal-box {
+  cursor: pointer;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -32,24 +32,24 @@ export default define.page(async function Home(_ctx) {
   return (
     <div class="min-h-screen">
       <Head>
-        <title>doxy — docs → skills</title>
+        <title>doxy — docs & codebases → Claude Code skills</title>
         <meta
           name="description"
-          content="Transform any documentation site into Claude Code skills. One command. Instant knowledge."
+          content="Turn any docs URL or codebase into Claude Code skills. One command. Claude answers from the source, not from memory."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="doxy — docs → skills" />
-        <meta property="og:description" content="Transform any documentation site into Claude Code skills. One command. Instant knowledge." />
+        <meta property="og:title" content="doxy — docs & codebases → skills" />
+        <meta property="og:description" content="Turn any docs URL or codebase into Claude Code skills. One command. Claude answers from the source, not from memory." />
         <meta property="og:image" content="https://doxy.sh/og.png" />
         <meta property="og:url" content="https://doxy.sh" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="doxy — docs → skills" />
-        <meta name="twitter:description" content="Transform any documentation site into Claude Code skills. One command. Instant knowledge." />
+        <meta name="twitter:title" content="doxy — docs & codebases → skills" />
+        <meta name="twitter:description" content="Turn any docs URL or codebase into Claude Code skills. One command. Claude answers from the source, not from memory." />
         <meta name="twitter:image" content="https://doxy.sh/og.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,69 +61,72 @@ export default define.page(async function Home(_ctx) {
       </Head>
 
       {/* Main content */}
-      <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+      <main class="max-w-3xl mx-auto px-5 sm:px-8 py-16 sm:py-24 gradient-bg min-h-screen">
         {/* Hero Section */}
-        <header class="mb-16 animate-fade-in">
-          <div class="mb-4">
-            <pre class="text-[10px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+        <header class="mb-20 animate-fade-in">
+          <div class="mb-6">
+            <pre class="ascii-logo text-[9px] sm:text-[12px] leading-none select-none whitespace-pre text-left" aria-hidden="true">{`██████╗  ██████╗ ██╗  ██╗██╗   ██╗
 ██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
 ██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
 ██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
 ██████╔╝╚██████╔╝██╔╝ ██╗   ██║
 ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝`}</pre>
           </div>
-          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
-            docs → skills
+          <p class="section-label mb-6">
+            docs & codebases → skills
           </p>
+          <h1 class="text-xl sm:text-2xl font-medium text-[var(--text-primary)] mb-4 leading-snug max-w-md">
+            Stop copy-pasting from docs.
+          </h1>
           <p class="text-base sm:text-lg leading-relaxed text-[var(--text-secondary)] max-w-lg">
-            Transform any documentation site into Claude Code skills. Point it at docs, get instant knowledge.
+            Point doxy at any docs URL or codebase. Get a Claude Code skill that actually knows it. One command.
           </p>
         </header>
 
         {/* Install */}
-        <section class="mb-16 animate-fade-in animate-delay-1">
-          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-4">
-            Install in one command
+        <section class="mb-20 animate-fade-in animate-delay-1">
+          <p class="section-label mb-4">
+            Install
           </p>
           <InstallCommand />
         </section>
 
         {/* How it works */}
-        <section class="mb-16 animate-fade-in animate-delay-2">
-          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+        <section class="mb-20 animate-fade-in animate-delay-2">
+          <p class="section-label mb-5">
             How it works
           </p>
 
-          <div class="space-y-4">
+          <div class="space-y-3">
             {[
               {
                 num: "01",
-                title: "Point at docs",
-                desc: "Give doxy any documentation URL",
+                title: "Point at a source",
+                desc: "A docs URL, a codebase path, or both. React docs, your monorepo, anything.",
               },
               {
                 num: "02",
-                title: "Crawl & extract",
-                desc: "Automatically maps navigation and fetches all pages",
+                title: "doxy does the reading",
+                desc: "Crawls docs. Maps architecture. Extracts the stuff that matters.",
               },
               {
                 num: "03",
-                title: "Generate skills",
-                desc: "Creates properly structured SKILL.md files",
+                title: "Get structured skills",
+                desc: "Clean markdown files that Claude Code actually understands.",
               },
               {
                 num: "04",
-                title: "Instant knowledge",
-                desc: "Your AI now has deep expertise in that library",
+                title: "Ask Claude anything",
+                desc: "Answers come from the source, not from stale training data.",
               },
             ].map((step) => (
               <div
                 key={step.num}
-                class="flex items-start gap-6 p-4 terminal-box transition-colors"
+                class="flex items-start gap-5 p-4 terminal-box"
               >
-                <span class="text-[var(--text-muted)] text-lg font-bold">{step.num}</span>
+                <span class="step-number">{step.num}</span>
                 <div>
-                  <h3 class="font-bold mb-1">{step.title}</h3>
+                  <h3 class="font-medium text-[var(--text-primary)] mb-1">{step.title}</h3>
                   <p class="text-sm text-[var(--text-muted)]">{step.desc}</p>
                 </div>
               </div>
@@ -132,48 +135,102 @@ export default define.page(async function Home(_ctx) {
         </section>
 
         {/* Usage Example */}
-        <section class="mb-16 animate-fade-in animate-delay-3">
-          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
-            Usage
+        <section class="mb-20 animate-fade-in animate-delay-3">
+          <p class="section-label mb-5">
+            In action
           </p>
 
-          <div class="terminal-box p-4 sm:p-6 overflow-x-auto">
-            <code class="block text-sm whitespace-nowrap">
-              <span class="text-[var(--text-muted)]">$</span>{" "}
-              <span class="text-[var(--text-primary)]">/doxy</span>{" "}
-              <span class="text-[var(--text-secondary)]">
-                https://react.dev/reference
-              </span>
-            </code>
-            <div class="mt-4 pt-4 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)]">
-              <p>→ Crawling react.dev...</p>
-              <p>→ Found 47 documentation pages</p>
-              <p>→ Generated skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/react/</span></p>
+          <div class="space-y-4">
+            <div class="terminal-box p-4 sm:p-5 overflow-x-auto font-mono">
+              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">From docs</p>
+              <code class="block text-sm whitespace-nowrap">
+                <span class="text-[var(--text-muted)]">$</span>{" "}
+                <span class="text-[var(--text-primary)]">/doxy</span>{" "}
+                <span class="text-[var(--text-secondary)]">
+                  https://react.dev/reference
+                </span>
+              </code>
+              <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
+                <p>→ Crawling react.dev...</p>
+                <p>→ Found 47 documentation pages</p>
+                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/react/</span></p>
+              </div>
+            </div>
+            <div class="terminal-box p-4 sm:p-5 overflow-x-auto font-mono">
+              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">From your codebase</p>
+              <code class="block text-sm whitespace-nowrap">
+                <span class="text-[var(--text-muted)]">$</span>{" "}
+                <span class="text-[var(--text-primary)]">/doxy:codebase</span>{" "}
+                <span class="text-[var(--text-secondary)]">
+                  ./packages/api
+                </span>
+              </code>
+              <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
+                <p>→ Analyzing TypeScript codebase...</p>
+                <p>→ Detected monorepo with 8 packages</p>
+                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/api-arch/</span></p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Commands */}
-        <section class="mb-16 animate-fade-in animate-delay-4">
-          <p class="text-xs uppercase tracking-widest text-[var(--text-muted)] mb-6">
+        <section class="mb-20 animate-fade-in animate-delay-4">
+          <p class="section-label mb-5">
             Commands
           </p>
 
-          <div class="space-y-2">
+          {/* Docs commands */}
+          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3 mt-6">Documentation</p>
+          <div class="space-y-2 mb-6">
             {[
               { cmd: "/doxy <url>", desc: "Generate skills from docs" },
-              { cmd: "/doxy:init", desc: "Interactive setup wizard" },
-              { cmd: "/doxy:list", desc: "List all skills" },
-              { cmd: "/doxy:update <name> [url]", desc: "Refresh from source" },
-              { cmd: "/doxy:adopt <name> <url>", desc: "Add manifest to existing" },
-              { cmd: "/doxy:delete <name>", desc: "Remove a skill" },
-              { cmd: "/doxy:help", desc: "Show help" },
+              { cmd: "/doxy:init", desc: "Interactive setup" },
+              { cmd: "/doxy:update <name>", desc: "Re-crawl from source" },
             ].map((item) => (
               <div
                 key={item.cmd}
-                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box transition-colors"
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box"
               >
-                <code class="text-[var(--text-primary)] text-sm">{item.cmd}</code>
+                <code class="text-[var(--text-primary)] text-sm font-mono">{item.cmd}</code>
+                <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Codebase commands */}
+          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3">Codebase</p>
+          <div class="space-y-2 mb-6">
+            {[
+              { cmd: "/doxy:codebase [path]", desc: "Generate architecture skills" },
+              { cmd: "/doxy:codebase:update <name>", desc: "Re-analyze codebase" },
+              { cmd: "/doxy:codebase:export <name>", desc: "Export for another repo" },
+              { cmd: "/doxy:codebase:import <path>", desc: "Import exported skill" },
+            ].map((item) => (
+              <div
+                key={item.cmd}
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box"
+              >
+                <code class="text-[var(--text-primary)] text-sm font-mono">{item.cmd}</code>
+                <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Management commands */}
+          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3">Management</p>
+          <div class="space-y-2">
+            {[
+              { cmd: "/doxy:list", desc: "List all doxy skills" },
+              { cmd: "/doxy:delete <name>", desc: "Remove a skill" },
+              { cmd: "/doxy:adopt <name> <url>", desc: "Add manifest to existing skill" },
+              { cmd: "/doxy:help", desc: "Show all commands" },
+            ].map((item) => (
+              <div
+                key={item.cmd}
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box"
+              >
+                <code class="text-[var(--text-primary)] text-sm font-mono">{item.cmd}</code>
                 <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
               </div>
             ))}
@@ -181,21 +238,20 @@ export default define.page(async function Home(_ctx) {
         </section>
 
         {/* Stats */}
-        <section class="mb-16 animate-fade-in animate-delay-5">
-          <div class="flex flex-wrap items-center gap-4 text-sm">
+        <section class="mb-20 animate-fade-in animate-delay-5">
+          <div class="flex flex-wrap items-center gap-3">
             <span class="tag">{installs.toLocaleString()} installs</span>
-            <span class="tag">★ {stars.toLocaleString()}</span>
+            <span class="tag">{stars.toLocaleString()} stars</span>
             <span class="tag">v1.1.0</span>
           </div>
         </section>
 
         {/* Footer */}
-        <footer class="pt-8 border-t border-[var(--border-color)]">
+        <footer class="pt-10 border-t border-[var(--border-color)]">
           <div class="flex flex-wrap items-center justify-between gap-6">
-            <a href="https://github.com/davidosemwegie/doxy" class="text-sm">GitHub</a>
+            <a href="https://github.com/davidosemwegie/doxy" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-secondary)]">GitHub</a>
             <p class="text-sm text-[var(--text-muted)]">
-              © 2025{" "}
-              <a href="https://davidosemwegie.com">
+              <a href="https://davidosemwegie.com" class="hover:text-[var(--text-secondary)]">
                 David Osemwegie
               </a>
             </p>

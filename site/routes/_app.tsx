@@ -6,7 +6,8 @@ export default define.page(function App({ Component }) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>site</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>doxy</title>
       </head>
       <body>
         <Component />
