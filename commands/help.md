@@ -40,6 +40,19 @@ EXAMPLES
   /doxy:delete anime-js
       Remove the anime-js skill folder
 
+CODEBASE COMMANDS
+  /doxy:codebase [path]              Generate architecture skill from codebase
+  /doxy:codebase:update <name> [path] Refresh skill (optionally with new path)
+  /doxy:codebase:export <name>       Export for use in another repo
+  /doxy:codebase:import <path>       Import exported skill
+
+CODEBASE EXAMPLES
+  /doxy:codebase                     Analyze current directory
+  /doxy:codebase ./backend           Analyze specific folder
+  /doxy:codebase:update api          Refresh the api skill
+  /doxy:codebase:export api          Export api skill
+  /doxy:codebase:import ~/other/skills/api-arch/
+
 SKILL STORAGE
   Skills are stored in: .claude-plugin/skills/<name>/
   Each skill folder contains:
@@ -47,5 +60,7 @@ SKILL STORAGE
     - doxy-manifest.json with metadata (source URL, timestamps)
 
 MORE INFO
+  Documentation skills: /doxy <url>
+  Codebase analysis: /doxy:codebase [path]
   https://github.com/davidosemwegie/doxy
 ```
