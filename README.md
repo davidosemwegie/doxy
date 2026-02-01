@@ -13,11 +13,17 @@ Generate Claude Code skills from documentation websites.
 
 ## Installation
 
+### Via skills.sh (works with 40+ agents)
+```bash
+npx skills add davidosemwegie/doxy
+```
+
+### Via Claude Code plugin (includes slash commands)
 ```bash
 curl -fsSL doxy.sh/install | bash
 ```
 
-Or manually add via Claude Code:
+Or manually:
 ```
 /plugin davidosemwegie/doxy
 ```
