@@ -38,6 +38,20 @@ export default define.page(async function Home(_ctx) {
           content="Transform any documentation site into Claude Code skills. One command. Instant knowledge."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="doxy — docs → skills" />
+        <meta property="og:description" content="Transform any documentation site into Claude Code skills. One command. Instant knowledge." />
+        <meta property="og:image" content="https://doxy.sh/og.png" />
+        <meta property="og:url" content="https://doxy.sh" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="doxy — docs → skills" />
+        <meta name="twitter:description" content="Transform any documentation site into Claude Code skills. One command. Instant knowledge." />
+        <meta name="twitter:image" content="https://doxy.sh/og.png" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
