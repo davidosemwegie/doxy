@@ -53,6 +53,29 @@ fi
 # Remove site directory (not needed for plugin)
 rm -rf "$DOXY_DIR/site"
 
+# Register plugin in installed_plugins.json
+PLUGINS_JSON="$CLAUDE_DIR/plugins/installed_plugins.json"
+TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%S.000Z)
+
+if [ -f "$PLUGINS_JSON" ]; then
+    # Create backup
+    cp "$PLUGINS_JSON" "$PLUGINS_JSON.bak"
+
+    # Add doxy entry using node (more reliable than jq for complex JSON)
+    node -e "
+const fs = require('fs');
+const data = JSON.parse(fs.readFileSync('$PLUGINS_JSON', 'utf8'));
+data.plugins['doxy@local'] = [{
+  scope: 'user',
+  installPath: '$DOXY_DIR',
+  version: '1.1.0',
+  installedAt: '$TIMESTAMP',
+  lastUpdated: '$TIMESTAMP'
+}];
+fs.writeFileSync('$PLUGINS_JSON', JSON.stringify(data, null, 2));
+" 2>/dev/null || echo "\${YELLOW}Note: Could not auto-register. Run /plugin to manually add.\${NC}"
+fi
+
 # Track the install
 curl -s "https://doxy.sh/api/track-install" > /dev/null 2>&1 || true
 
@@ -66,6 +89,10 @@ echo "  /doxy <url>        Generate skills from docs"
 echo "  /doxy:init         Interactive setup"
 echo "  /doxy:list         List all skills"
 echo "  /doxy:help         Show all commands"
+echo ""
+echo "To uninstall:"
+echo "  rm -rf $DOXY_DIR"
+echo "  # Then remove 'doxy@local' from $PLUGINS_JSON"
 echo ""
 `;
 
