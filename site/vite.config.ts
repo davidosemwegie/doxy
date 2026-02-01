@@ -4,4 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [fresh(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      external: ["satori", "@resvg/resvg-js"],
+    },
+  },
 });

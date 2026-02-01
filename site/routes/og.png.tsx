@@ -1,6 +1,6 @@
 import { define } from "../utils.ts";
-import satori from "npm:satori";
-import { Resvg } from "npm:@resvg/resvg-js";
+import satori from "satori";
+import { Resvg } from "@resvg/resvg-js";
 
 // Inter font - we'll fetch it once and cache
 let fontData: ArrayBuffer | null = null;

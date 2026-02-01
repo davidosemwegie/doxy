@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
-/* Import distinctive fonts */
+/* Import fonts first (must precede other rules) */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+
+@import "tailwindcss";
 
 /* CSS Custom Properties - Stone Dark Theme (Cursor-style) */
 :root {
