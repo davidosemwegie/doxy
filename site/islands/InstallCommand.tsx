@@ -2,7 +2,7 @@ import { useSignal } from "@preact/signals";
 
 export default function InstallCommand() {
   const copied = useSignal(false);
-  const command = "curl -fsSL doxy.sh/install | bash";
+  const command = "npx skills add davidosemwegie/doxy";
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(command);
