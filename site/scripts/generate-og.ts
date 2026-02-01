@@ -2,17 +2,28 @@
 
 /**
  * Generates the OG image for the site.
- * Run with: deno run --allow-net --allow-write --allow-read scripts/generate-og.ts
+ * Run with: deno task og
  */
 
 import satori from "satori";
 import { Resvg, initWasm } from "@resvg/resvg-wasm";
 
-// Fetch font
-const fontResponse = await fetch(
-  "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
-);
-const fontData = await fontResponse.arrayBuffer();
+// Fetch fonts (TTF from Google Fonts - satori doesn't support woff2)
+const [jetbrainsResponse, ibmPlex400Response, ibmPlex500Response] = await Promise.all([
+  fetch(
+    "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf"
+  ),
+  fetch(
+    "https://fonts.gstatic.com/s/ibmplexsans/v23/zYXGKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1swZSAXcomDVmadSD6llzAA.ttf"
+  ),
+  fetch(
+    "https://fonts.gstatic.com/s/ibmplexsans/v23/zYXGKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1swZSAXcomDVmadSD2FlzAA.ttf"
+  ),
+]);
+
+const jetbrainsFont = await jetbrainsResponse.arrayBuffer();
+const ibmPlex400Font = await ibmPlex400Response.arrayBuffer();
+const ibmPlex500Font = await ibmPlex500Response.arrayBuffer();
 
 // Initialize WASM
 const wasmResponse = await fetch(
@@ -23,6 +34,14 @@ await initWasm(wasmBuffer);
 
 console.log("Generating OG image...");
 
+// ASCII art logo - simplified for better rendering
+const asciiLogo = `██████╗  ██████╗ ██╗  ██╗██╗   ██╗
+██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
+██║  ██║██║   ██║ ╚███╔╝  ╚████╔╝
+██║  ██║██║   ██║ ██╔██╗   ╚██╔╝
+██████╔╝╚██████╔╝██╔╝ ██╗   ██║
+╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝`;
+
 const svg = await satori(
   {
     type: "div",
@@ -32,126 +51,96 @@ const svg = await satori(
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#0a0a0a",
-        fontFamily: "Inter",
+        padding: "60px 80px",
+        backgroundColor: "#0c0c0c",
+        fontFamily: "IBM Plex Sans",
+        // Subtle gradient like the site
+        background: "radial-gradient(ellipse 100% 100% at 50% 0%, #1a1a1a 0%, #0c0c0c 60%)",
       },
       children: [
+        // ASCII Logo
         {
-          type: "div",
+          type: "pre",
           props: {
             style: {
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fontFamily: "JetBrains Mono",
+              fontSize: 18,
+              lineHeight: 1.1,
+              color: "#e8e8e8",
+              margin: 0,
+              letterSpacing: "-0.02em",
             },
-            children: [
-              // Logo
-              {
-                type: "div",
-                props: {
-                  style: {
-                    fontSize: 120,
-                    fontWeight: 700,
-                    color: "#22d3ee",
-                    letterSpacing: "-0.05em",
-                    textShadow: "0 0 60px rgba(34, 211, 238, 0.5)",
-                  },
-                  children: "doxy",
-                },
-              },
-              // Tagline
-              {
-                type: "div",
-                props: {
-                  style: {
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 16,
-                    marginTop: 24,
-                    fontSize: 36,
-                  },
-                  children: [
-                    {
-                      type: "span",
-                      props: {
-                        style: { color: "#666" },
-                        children: "docs",
-                      },
-                    },
-                    {
-                      type: "span",
-                      props: {
-                        style: {
-                          color: "#22d3ee",
-                          textShadow: "0 0 20px rgba(34, 211, 238, 0.5)",
-                        },
-                        children: "→",
-                      },
-                    },
-                    {
-                      type: "span",
-                      props: {
-                        style: { color: "#fff" },
-                        children: "skills",
-                      },
-                    },
-                  ],
-                },
-              },
-              // Description
-              {
-                type: "div",
-                props: {
-                  style: {
-                    marginTop: 40,
-                    fontSize: 24,
-                    color: "#888",
-                    maxWidth: 600,
-                    textAlign: "center",
-                  },
-                  children: "Generate Claude Code skills from documentation",
-                },
-              },
-            ],
+            children: asciiLogo,
           },
         },
-        // Footer
+        // Section label
         {
           type: "div",
           props: {
             style: {
-              position: "absolute",
-              bottom: 40,
+              fontFamily: "JetBrains Mono",
+              fontSize: 12,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "#6b6b6b",
+              marginTop: 32,
+            },
+            children: "docs & codebases → skills",
+          },
+        },
+        // Main headline
+        {
+          type: "div",
+          props: {
+            style: {
+              fontSize: 42,
+              fontWeight: 500,
+              color: "#e8e8e8",
+              marginTop: 24,
+              lineHeight: 1.2,
+            },
+            children: "Stop copy-pasting from docs.",
+          },
+        },
+        // Description
+        {
+          type: "div",
+          props: {
+            style: {
+              fontSize: 20,
+              color: "#a1a1a1",
+              marginTop: 16,
+              lineHeight: 1.6,
+              maxWidth: 600,
+            },
+            children: "Point doxy at any docs URL or codebase. Get a Claude Code skill that actually knows it.",
+          },
+        },
+        // Footer with URL
+        {
+          type: "div",
+          props: {
+            style: {
               display: "flex",
               alignItems: "center",
-              gap: 24,
-              fontSize: 20,
-              color: "#666",
+              gap: 16,
+              marginTop: "auto",
+              paddingTop: 40,
             },
             children: [
               {
-                type: "span",
+                type: "div",
                 props: {
                   style: {
-                    padding: "8px 16px",
-                    border: "1px solid #333",
-                    borderRadius: 8,
+                    fontFamily: "JetBrains Mono",
+                    fontSize: 16,
+                    color: "#6b6b6b",
+                    padding: "10px 16px",
+                    border: "1px solid #262626",
+                    borderRadius: 6,
+                    background: "#141414",
                   },
-                  children: "/doxy <url>",
-                },
-              },
-              {
-                type: "span",
-                props: {
-                  children: "•",
-                },
-              },
-              {
-                type: "span",
-                props: {
-                  children: "Claude Code Plugin",
+                  children: "doxy.sh",
                 },
               },
             ],
@@ -165,15 +154,21 @@ const svg = await satori(
     height: 630,
     fonts: [
       {
-        name: "Inter",
-        data: fontData,
+        name: "JetBrains Mono",
+        data: jetbrainsFont,
         weight: 400,
         style: "normal",
       },
       {
-        name: "Inter",
-        data: fontData,
-        weight: 700,
+        name: "IBM Plex Sans",
+        data: ibmPlex400Font,
+        weight: 400,
+        style: "normal",
+      },
+      {
+        name: "IBM Plex Sans",
+        data: ibmPlex500Font,
+        weight: 500,
         style: "normal",
       },
     ],
