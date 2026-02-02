@@ -242,7 +242,7 @@ export default define.page(async function Home(_ctx) {
           <div class="flex flex-wrap items-center gap-3">
             <span class="tag">{installs.toLocaleString()} installs</span>
             <span class="tag">{stars.toLocaleString()} stars</span>
-            <span class="tag">v1.1.0</span>
+            <span class="tag">v1.2.0</span>
           </div>
         </section>
 
