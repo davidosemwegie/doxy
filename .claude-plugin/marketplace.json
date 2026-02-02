@@ -4,16 +4,16 @@
     "name": "David Osemwegie"
   },
   "metadata": {
-    "description": "Generate Claude Code skills from documentation websites",
-    "version": "1.2.0"
+    "description": "Generate AI skills from documentation websites. Works with Claude Code, Cursor Codex, and Windsurf.",
+    "version": "1.3.0"
   },
   "plugins": [
     {
       "name": "doxy",
       "source": "./",
-      "description": "One-command documentation-to-skills generator. Point it at any docs site and it creates Claude Code skills automatically.",
+      "description": "One-command documentation-to-skills generator. Point it at any docs site and it creates AI assistant skills automatically. Works with Claude Code, Cursor Codex, and Windsurf.",
       "category": "automation",
-      "tags": ["documentation", "skills", "generator", "automation", "docs"]
+      "tags": ["documentation", "skills", "generator", "automation", "docs", "cursor", "codex", "windsurf"]
     }
   ]
 }

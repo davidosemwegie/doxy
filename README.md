@@ -100,8 +100,16 @@ Skills are created following best practices:
 ## Supported Editors
 
 - Claude Code
-- Cursor
+- Cursor (including Cursor Codex)
 - Windsurf
+
+### Editor-Specific Installation
+
+**Claude Code:** Uses `~/.claude/plugins/` for plugin storage and `.claude/skills/` for generated skills.
+
+**Cursor / Cursor Codex:** Uses `~/.cursor/plugins/` for plugin storage. Skills are generated in the same `.claude/skills/` directory for compatibility.
+
+**Windsurf:** Uses `~/.windsurf/plugins/` for plugin storage.
 
 ## License
 

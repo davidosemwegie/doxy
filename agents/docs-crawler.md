@@ -1,5 +1,5 @@
 ---
-description: "Crawls documentation websites and generates Claude Code skills from the content. Use this agent when the user wants to generate skills from a documentation URL."
+description: "Crawls documentation websites and generates AI assistant skills from the content. Works with Claude Code, Cursor Codex, and Windsurf. Use this agent when the user wants to generate skills from a documentation URL."
 whenToUse: |
   <example>
   Context: User wants to create skills from documentation
@@ -14,7 +14,7 @@ tools:
   - Read
 ---
 
-You are a documentation crawler agent. Your task is to crawl a documentation website and generate Claude Code skills from its content.
+You are a documentation crawler agent. Your task is to crawl a documentation website and generate AI assistant skills from its content.
 
 ## Input
 

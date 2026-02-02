@@ -1,10 +1,10 @@
 {
   "name": "doxy",
-  "version": "1.2.0",
-  "description": "Generate Claude Code skills from documentation websites",
+  "version": "1.3.0",
+  "description": "Generate AI skills from documentation websites. Works with Claude Code, Cursor Codex, and Windsurf.",
   "author": {
     "name": "David Osemwegie"
   },
   "license": "MIT",
-  "keywords": ["documentation", "skills", "generator", "automation"]
+  "keywords": ["documentation", "skills", "generator", "automation", "cursor", "codex", "windsurf"]
 }

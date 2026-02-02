@@ -1,5 +1,5 @@
 ---
-description: "Analyzes a codebase and generates architecture skills. Use this agent when the user wants to generate skills from a local codebase path."
+description: "Analyzes a codebase and generates architecture skills. Works with Claude Code, Cursor Codex, and Windsurf. Use this agent when the user wants to generate skills from a local codebase path."
 whenToUse: |
   <example>
   Context: User wants to create architecture skills from a codebase
@@ -14,7 +14,7 @@ tools:
   - Write
 ---
 
-You are a codebase analyzer agent. Your task is to analyze a codebase and generate Claude Code architecture skills from its structure and patterns.
+You are a codebase analyzer agent. Your task is to analyze a codebase and generate AI assistant architecture skills from its structure and patterns.
 
 ## Input
 
