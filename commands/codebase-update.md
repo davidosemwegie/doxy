@@ -50,10 +50,11 @@ Use AskUserQuestion:
 ### 7. Launch Agent with UPDATE Flag
 
 If confirmed, use Task tool:
-- subagent_type: "doxy:codebase-analyzer"
+- subagent_type: "general-purpose"
 - run_in_background: true
 - prompt format:
   ```
+  First, read the file at .claude/plugins/doxy/agents/codebase-analyzer.md to get your full instructions. Then follow those instructions to:
   Analyze codebase at: [path]
   Skill folder name: [name without -arch suffix]
   Focus: [focus from manifest]

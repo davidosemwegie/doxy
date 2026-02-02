@@ -7,9 +7,9 @@
 ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝
 ```
 
-**docs → skills**
+**docs & codebases → skills**
 
-Generate Claude Code skills from documentation websites.
+Generate Claude Code skills from documentation websites or your codebase.
 
 ## Installation
 
@@ -19,41 +19,42 @@ npx skills add davidosemwegie/doxy
 
 ## Usage
 
-### From Documentation
+### Interactive Setup (Recommended)
 
 ```
-/doxy:url <documentation-url>
+/doxy:init
 ```
 
-Example:
+This will ask whether you want to generate skills from:
+- **Documentation URL** - crawl a docs site
+- **Local codebase** - analyze your code
+
+### Direct Commands
+
+From documentation:
 ```
-/doxy:url https://animejs.com/documentation
+/doxy:url https://react.dev/reference
 ```
 
-### From Codebase
-
-```
-/doxy:codebase [path]
-```
-
-Example:
+From codebase:
 ```
 /doxy:codebase ./backend
 ```
 
 ## Commands
 
+### Getting Started
+
+| Command | Description |
+|---------|-------------|
+| `/doxy:init` | Interactive setup - choose docs or codebase |
+
 ### Documentation Skills
 
 | Command | Description |
 |---------|-------------|
 | `/doxy:url <url>` | Generate skills from a documentation URL |
-| `/doxy:init` | Interactive setup - asks for name and URL |
-| `/doxy:list` | List all doxy-generated skills |
 | `/doxy:update <name> [url]` | Refresh a skill (optionally with new URL) |
-| `/doxy:delete <name>` | Delete a skill (with confirmation) |
-| `/doxy:adopt <name> <url>` | Add manifest to existing skill folder |
-| `/doxy:help` | Show command reference |
 
 ### Codebase Analysis
 
@@ -63,6 +64,15 @@ Example:
 | `/doxy:codebase:update <name> [path]` | Refresh skill (optionally with new path) |
 | `/doxy:codebase:export <name>` | Export skill for use in another repo |
 | `/doxy:codebase:import <path>` | Import exported skill |
+
+### Management
+
+| Command | Description |
+|---------|-------------|
+| `/doxy:list` | List all doxy-generated skills |
+| `/doxy:delete <name>` | Delete a skill (with confirmation) |
+| `/doxy:adopt <name> <url>` | Add manifest to existing skill folder |
+| `/doxy:help` | Show command reference |
 
 ## What It Does
 

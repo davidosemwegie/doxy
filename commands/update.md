@@ -77,9 +77,9 @@ find ".claude/skills/$ARGUMENTS" -type d -empty -delete
 ## Step 5: Re-crawl Documentation
 
 Use the Task tool with these parameters:
-- subagent_type: "doxy:docs-crawler"
+- subagent_type: "general-purpose"
 - run_in_background: true
-- prompt: "Crawl and generate skills from: [source_url]\nSkill folder name: $ARGUMENTS\nThis is an UPDATE - manifest already exists, just update last_updated timestamp."
+- prompt: "First, read the file at .claude/plugins/doxy/agents/docs-crawler.md to get your full instructions. Then follow those instructions to crawl and generate skills from: [source_url]\nSkill folder name: $ARGUMENTS\nThis is an UPDATE - manifest already exists, just update last_updated timestamp."
 - description: "Updating skills from docs"
 
 Tell the user the update is running in the background.
