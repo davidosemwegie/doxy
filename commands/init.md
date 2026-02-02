@@ -8,7 +8,7 @@ Set up a new documentation skill interactively.
 
 Use AskUserQuestion to get the skill folder name:
 
-Question: "What do you want to call this skill? This will be the folder name under `.claude-plugin/skills/`"
+Question: "What do you want to call this skill? This will be the folder name under `.claude/skills/`"
 Header: "Skill name"
 Options:
 - "Auto-detect from docs" (Let the crawler detect the library name automatically)
@@ -39,5 +39,5 @@ Use the Task tool with these parameters:
 Tell the user:
 1. The agent is running in the background
 2. They can continue working while it processes
-3. Skills will be created in `.claude-plugin/skills/[folder-name]/`
+3. Skills will be created in `.claude/skills/[folder-name]/`
 4. They can check progress with `/tasks` or read the output file

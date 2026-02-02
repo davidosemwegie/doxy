@@ -71,13 +71,13 @@ Convert the folder name to lowercase kebab-case (e.g., "My Library" → "my-libr
 
 **CRITICAL: Check if folder already exists before proceeding.**
 
-Use Glob to check if `.claude-plugin/skills/[folder-name]/` already exists:
+Use Glob to check if `.claude/skills/[folder-name]/` already exists:
 ```
-pattern: .claude-plugin/skills/[folder-name]/**/*
+pattern: .claude/skills/[folder-name]/**/*
 ```
 
 **If this is an UPDATE operation** (prompt contains "This is an UPDATE"):
-- Verify the manifest exists by trying to read `.claude-plugin/skills/[folder-name]/doxy-manifest.json`
+- Verify the manifest exists by trying to read `.claude/skills/[folder-name]/doxy-manifest.json`
 - If the manifest doesn't exist:
   1. Report that the skill folder or manifest is missing
   2. Suggest running `/doxy [url]` to create a new skill instead
@@ -99,14 +99,14 @@ Only proceed if the folder doesn't exist or is empty (or this is an UPDATE).
 
 Create a parent folder:
 ```bash
-mkdir -p .claude-plugin/skills/[folder-name]
+mkdir -p .claude/skills/[folder-name]
 ```
 
-Example: For folder name "webgl" → `.claude-plugin/skills/webgl/`
+Example: For folder name "webgl" → `.claude/skills/webgl/`
 
 #### Create or Update Manifest
 
-**For NEW operations:** Create `.claude-plugin/skills/[folder-name]/doxy-manifest.json`:
+**For NEW operations:** Create `.claude/skills/[folder-name]/doxy-manifest.json`:
 ```json
 {
   "name": "[folder-name]",
@@ -117,7 +117,7 @@ Example: For folder name "webgl" → `.claude-plugin/skills/webgl/`
 ```
 
 **For UPDATE operations:**
-1. Use the Read tool to read the existing manifest at `.claude-plugin/skills/[folder-name]/doxy-manifest.json`
+1. Use the Read tool to read the existing manifest at `.claude/skills/[folder-name]/doxy-manifest.json`
 2. Parse the JSON to extract the existing `name`, `source_url`, and `created_at` values
 3. Only update the `last_updated` field with the current ISO 8601 timestamp
 4. Use the Write tool to save the updated manifest:
@@ -145,14 +145,14 @@ For each page in the navigation structure:
 3. **Generate skill**: Create a skill directory under the folder
 
 #### Skill Naming and Location
-- Put all skills under `.claude-plugin/skills/[folder-name]/`
+- Put all skills under `.claude/skills/[folder-name]/`
 - Derive skill subfolder name from URL path (e.g., `/docs/api/methods` → `api-methods`)
 - Use kebab-case
 - Remove common prefixes like `docs/`, `guide/`, `reference/`, and the library name itself
 
 Example structure for folder "webgl":
 ```
-.claude-plugin/skills/webgl/
+.claude/skills/webgl/
 ├── getting-started/
 │   └── SKILL.md
 ├── best-practices/
@@ -183,7 +183,7 @@ description: This skill should be used when the user asks about [topic from page
 ### Step 6: Report Results
 
 After processing all pages, report:
-- Folder name used: `.claude-plugin/skills/[folder-name]/`
+- Folder name used: `.claude/skills/[folder-name]/`
 - Number of skills created
 - List of skill names with their purposes
 - Any pages that failed to process

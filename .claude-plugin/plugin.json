@@ -1,6 +1,6 @@
 {
   "name": "doxy",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate Claude Code skills from documentation websites",
   "author": {
     "name": "David Osemwegie"

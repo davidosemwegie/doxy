@@ -43,7 +43,7 @@ Include ALL navigation links from the sidebar. Return relative URLs. Skip extern
 
 Create the skills folder:
 ```
-.claude-plugin/skills/[library-name]/
+.claude/skills/[library-name]/
 ```
 
 Create a manifest file `doxy-manifest.json`:
@@ -69,7 +69,7 @@ For each navigation item:
    Focus on technical content. Skip navigation, footers, ads.
    ```
 
-2. **Create skill** at `.claude-plugin/skills/[library-name]/[page-name]/SKILL.md`
+2. **Create skill** at `.claude/skills/[library-name]/[page-name]/SKILL.md`
 
 ### Step 4: Write SKILL.md Files
 
@@ -93,7 +93,7 @@ description: Use when working with [topic] in [library-name]. Covers [key concep
 
 **Directory structure example:**
 ```
-.claude-plugin/skills/webgl/
+.claude/skills/webgl/
 ├── doxy-manifest.json
 ├── getting-started/
 │   └── SKILL.md
@@ -106,7 +106,7 @@ description: Use when working with [topic] in [library-name]. Covers [key concep
 ### Step 5: Report Results
 
 After processing, report:
-- Folder created: `.claude-plugin/skills/[library-name]/`
+- Folder created: `.claude/skills/[library-name]/`
 - Number of skills generated
 - List of skill names with purposes
 - Any pages that failed to process

@@ -18,15 +18,15 @@ Example: `/doxy:adopt react-docs https://react.dev/reference`
 If $ARGUMENTS is empty or missing the URL:
 1. Show usage: `/doxy:adopt <skill-name> <source-url>`
 2. Use Glob to find skill folders without manifests:
-   - Find all folders: `.claude-plugin/skills/*/`
+   - Find all folders: `.claude/skills/*/`
    - Check which ones are missing `doxy-manifest.json`
 3. List any orphaned skills found
 4. STOP
 
 ## Step 2: Validate Skill Folder Exists
 
-Check if `.claude-plugin/skills/[skill-name]/` exists by using Glob with pattern:
-`.claude-plugin/skills/[skill-name]/*`
+Check if `.claude/skills/[skill-name]/` exists by using Glob with pattern:
+`.claude/skills/[skill-name]/*`
 
 If no files found:
 1. Tell user the skill folder doesn't exist
@@ -35,7 +35,7 @@ If no files found:
 
 ## Step 3: Check for Existing Manifest
 
-Try to read `.claude-plugin/skills/[skill-name]/doxy-manifest.json`
+Try to read `.claude/skills/[skill-name]/doxy-manifest.json`
 
 If manifest already exists:
 1. Show the current manifest contents
@@ -47,7 +47,7 @@ If manifest already exists:
 
 ## Step 4: Create Manifest
 
-Use Write to create `.claude-plugin/skills/[skill-name]/doxy-manifest.json`:
+Use Write to create `.claude/skills/[skill-name]/doxy-manifest.json`:
 
 ```json
 {

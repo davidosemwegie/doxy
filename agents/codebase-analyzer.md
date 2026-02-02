@@ -134,13 +134,13 @@ Append "-arch" suffix to distinguish architecture skills from other skill types.
 
 **CRITICAL: Check if folder already exists before proceeding.**
 
-Use Glob to check if `.claude-plugin/skills/[folder-name]-arch/` already exists:
+Use Glob to check if `.claude/skills/[folder-name]-arch/` already exists:
 ```
-pattern: .claude-plugin/skills/[folder-name]-arch/**/*
+pattern: .claude/skills/[folder-name]-arch/**/*
 ```
 
 **If this is an UPDATE operation** (prompt contains "This is an UPDATE"):
-- Verify the manifest exists by trying to read `.claude-plugin/skills/[folder-name]-arch/doxy-codebase-manifest.json`
+- Verify the manifest exists by trying to read `.claude/skills/[folder-name]-arch/doxy-codebase-manifest.json`
 - If the manifest doesn't exist:
   1. Report that the skill folder or manifest is missing
   2. Suggest running `/doxy:codebase [path]` to create a new skill instead
@@ -495,18 +495,18 @@ Create the architecture skills folder structure:
 
 **For non-monorepo projects:**
 ```bash
-mkdir -p .claude-plugin/skills/[folder-name]-arch
+mkdir -p .claude/skills/[folder-name]-arch
 ```
 
 **For monorepo projects:**
 ```bash
-mkdir -p .claude-plugin/skills/[folder-name]-arch/packages
-mkdir -p .claude-plugin/skills/[folder-name]-arch/cross-cutting
+mkdir -p .claude/skills/[folder-name]-arch/packages
+mkdir -p .claude/skills/[folder-name]-arch/cross-cutting
 ```
 
 ### Step 11: Generate SKILL.md
 
-Create `.claude-plugin/skills/[folder-name]-arch/SKILL.md`:
+Create `.claude/skills/[folder-name]-arch/SKILL.md`:
 
 ```markdown
 ---
@@ -622,7 +622,7 @@ For monorepo projects, create additional files:
 
 #### Package-specific files
 
-For each package, create `.claude-plugin/skills/[folder-name]-arch/packages/[package-name].md`:
+For each package, create `.claude/skills/[folder-name]-arch/packages/[package-name].md`:
 
 ```markdown
 ---
@@ -681,7 +681,7 @@ description: Package guide for [package-name] in [project-name] monorepo.
 
 #### Cross-cutting dependency file
 
-Create `.claude-plugin/skills/[folder-name]-arch/cross-cutting/dependencies.md`:
+Create `.claude/skills/[folder-name]-arch/cross-cutting/dependencies.md`:
 
 ```markdown
 ---
@@ -728,7 +728,7 @@ description: Package dependency graph and relationships for [project-name] monor
 
 #### Cross-cutting development file
 
-Create `.claude-plugin/skills/[folder-name]-arch/cross-cutting/development.md`:
+Create `.claude/skills/[folder-name]-arch/cross-cutting/development.md`:
 
 ```markdown
 ---
@@ -782,7 +782,7 @@ description: Build, test, and development workflows for [project-name] monorepo.
 
 ### Step 12: Generate api-surface.md
 
-Create `.claude-plugin/skills/[folder-name]-arch/api-surface.md`:
+Create `.claude/skills/[folder-name]-arch/api-surface.md`:
 
 Use Grep to find exported types and interfaces:
 ```
@@ -830,7 +830,7 @@ description: API surface and exported types for [project-name]. Use when working
 
 ### Step 13: Create Manifest
 
-Create `.claude-plugin/skills/[folder-name]-arch/doxy-codebase-manifest.json`:
+Create `.claude/skills/[folder-name]-arch/doxy-codebase-manifest.json`:
 
 **For NEW operations:**
 ```json
@@ -872,7 +872,7 @@ If not a monorepo, set `"monorepo": null`.
 ### Step 14: Report Results
 
 After processing, report:
-- Skill folder created: `.claude-plugin/skills/[folder-name]-arch/`
+- Skill folder created: `.claude/skills/[folder-name]-arch/`
 - Project name and tech stack detected
 - Language detected
 - Framework(s) detected
@@ -891,7 +891,7 @@ After processing, report:
 For monorepo projects, the complete skill structure is:
 
 ```
-.claude-plugin/skills/[name]-arch/
+.claude/skills/[name]-arch/
 ├── SKILL.md                    # Overview + cross-cutting concerns
 ├── doxy-codebase-manifest.json # Metadata with package list
 ├── api-surface.md              # Combined API surface
