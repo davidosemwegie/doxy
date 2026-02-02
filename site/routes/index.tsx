@@ -142,34 +142,29 @@ export default define.page(async function Home(_ctx) {
 
           <div class="space-y-4">
             <div class="terminal-box p-4 sm:p-5 overflow-x-auto font-mono">
-              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">From docs</p>
+              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">Interactive setup</p>
               <code class="block text-sm whitespace-nowrap">
                 <span class="text-[var(--text-muted)]">$</span>{" "}
-                <span class="text-[var(--text-primary)]">/doxy</span>{" "}
-                <span class="text-[var(--text-secondary)]">
-                  https://react.dev/reference
-                </span>
+                <span class="text-[var(--text-primary)]">/doxy:init</span>
               </code>
               <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
-                <p>→ Crawling react.dev...</p>
-                <p>→ Found 47 documentation pages</p>
-                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude/skills/react/</span></p>
+                <p>→ What do you want to generate skills from?</p>
+                <p class="pl-4 text-[var(--text-secondary)]">◉ Documentation URL</p>
+                <p class="pl-4 text-[var(--text-muted)]">○ Local codebase</p>
               </div>
             </div>
             <div class="terminal-box p-4 sm:p-5 overflow-x-auto font-mono">
-              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">From your codebase</p>
+              <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">Direct commands</p>
+              <code class="block text-sm whitespace-nowrap mb-2">
+                <span class="text-[var(--text-muted)]">$</span>{" "}
+                <span class="text-[var(--text-primary)]">/doxy:url</span>{" "}
+                <span class="text-[var(--text-secondary)]">https://react.dev/reference</span>
+              </code>
               <code class="block text-sm whitespace-nowrap">
                 <span class="text-[var(--text-muted)]">$</span>{" "}
                 <span class="text-[var(--text-primary)]">/doxy:codebase</span>{" "}
-                <span class="text-[var(--text-secondary)]">
-                  ./packages/api
-                </span>
+                <span class="text-[var(--text-secondary)]">./packages/api</span>
               </code>
-              <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
-                <p>→ Analyzing TypeScript codebase...</p>
-                <p>→ Detected monorepo with 8 packages</p>
-                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude/skills/api-arch/</span></p>
-              </div>
             </div>
           </div>
         </section>
@@ -180,12 +175,27 @@ export default define.page(async function Home(_ctx) {
             Commands
           </p>
 
-          {/* Docs commands */}
-          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3 mt-6">Documentation</p>
+          {/* Getting started */}
+          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3 mt-6">Getting started</p>
           <div class="space-y-2 mb-6">
             {[
-              { cmd: "/doxy <url>", desc: "Generate skills from docs" },
-              { cmd: "/doxy:init", desc: "Interactive setup" },
+              { cmd: "/doxy:init", desc: "Interactive setup (docs or codebase)" },
+            ].map((item) => (
+              <div
+                key={item.cmd}
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-3 terminal-box"
+              >
+                <code class="text-[var(--text-primary)] text-sm font-mono">{item.cmd}</code>
+                <span class="text-sm text-[var(--text-muted)]">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Docs commands */}
+          <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3">Documentation</p>
+          <div class="space-y-2 mb-6">
+            {[
+              { cmd: "/doxy:url <url>", desc: "Generate skills from docs" },
               { cmd: "/doxy:update <name>", desc: "Re-crawl from source" },
             ].map((item) => (
               <div

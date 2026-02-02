@@ -80,7 +80,7 @@ pattern: .claude/skills/[folder-name]/**/*
 - Verify the manifest exists by trying to read `.claude/skills/[folder-name]/doxy-manifest.json`
 - If the manifest doesn't exist:
   1. Report that the skill folder or manifest is missing
-  2. Suggest running `/doxy [url]` to create a new skill instead
+  2. Suggest running `/doxy:url [url]` to create a new skill instead
   3. STOP processing
 - If the manifest exists, proceed directly to Step 4
 

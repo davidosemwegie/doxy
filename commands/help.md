@@ -7,23 +7,27 @@ Display the doxy command reference.
 Show this help text:
 
 ```
-Doxy - Generate Claude Code skills from documentation
+Doxy - Generate Claude Code skills from docs & codebases
 
-COMMANDS
-  /doxy <url>              Generate skills from a documentation URL
-  /doxy:init               Interactive setup for a new documentation skill
-  /doxy:list               List all doxy-generated skills
+GETTING STARTED
+  /doxy:init               Interactive setup (docs or codebase)
+
+DOCUMENTATION COMMANDS
+  /doxy:url <url>          Generate skills from a documentation URL
   /doxy:update <name> [url]  Refresh a skill (optionally with new URL)
+
+MANAGEMENT
+  /doxy:list               List all doxy-generated skills
   /doxy:delete <name>      Delete a skill (with confirmation)
   /doxy:adopt <name> <url>   Add manifest to existing skill folder
   /doxy:help               Show this help message
 
 EXAMPLES
-  /doxy https://react.dev/reference
-      Generate skills from React documentation
-
   /doxy:init
-      Interactively create a new skill (asks for name and URL)
+      Interactive setup - choose docs or codebase
+
+  /doxy:url https://react.dev/reference
+      Generate skills from React documentation
 
   /doxy:update react-docs
       Re-crawl React documentation to refresh skills
@@ -60,7 +64,6 @@ SKILL STORAGE
     - doxy-manifest.json with metadata (source URL, timestamps)
 
 MORE INFO
-  Documentation skills: /doxy <url>
-  Codebase analysis: /doxy:codebase [path]
+  Start here: /doxy:init
   https://github.com/davidosemwegie/doxy
 ```
