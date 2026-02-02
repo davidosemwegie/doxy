@@ -70,7 +70,7 @@ Example:
 1. Fetches the documentation page and extracts navigation structure
 2. Visits each documentation page
 3. Generates Claude Code skills from the content
-4. Saves skills to `.claude-plugin/skills/[library-name]/`
+4. Saves skills to `.claude/skills/[library-name]/`
 5. Creates a manifest with source URL for easy updates
 
 ### Codebase Analysis

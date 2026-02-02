@@ -41,7 +41,7 @@ Store the monorepo type, mode, and selected packages (if applicable).
 
 Use AskUserQuestion to get the skill name:
 
-Question: "What should the skill be called? This will create `.claude-plugin/skills/[name]-arch/`"
+Question: "What should the skill be called? This will create `.claude/skills/[name]-arch/`"
 Header: "Skill name"
 Options:
 - "Auto-detect from package.json" (Use project name)
@@ -87,5 +87,5 @@ Use the Task tool with these parameters:
 Tell the user:
 1. The agent is running in the background
 2. They can continue working while it analyzes
-3. Skills will be created in `.claude-plugin/skills/[name]-arch/`
+3. Skills will be created in `.claude/skills/[name]-arch/`
 4. They can check progress with `/tasks` or read the output file

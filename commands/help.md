@@ -54,7 +54,7 @@ CODEBASE EXAMPLES
   /doxy:codebase:import ~/other/skills/api-arch/
 
 SKILL STORAGE
-  Skills are stored in: .claude-plugin/skills/<name>/
+  Skills are stored in: .claude/skills/<name>/
   Each skill folder contains:
     - SKILL.md files with documentation content
     - doxy-manifest.json with metadata (source URL, timestamps)

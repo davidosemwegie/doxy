@@ -100,7 +100,7 @@ Extract the skill name from the export based on format.
 Check if a skill with this name already exists.
 
 <check-conflicts>
-  <check-directory path=".claude-plugin/skills/$SKILL_NAME/">
+  <check-directory path=".claude/skills/$SKILL_NAME/">
     <exists>
       <AskUserQuestion>
         <Header>Conflict</Header>
@@ -158,10 +158,10 @@ Process the import based on the detected format.
 <process-import>
   <if-format is="full">
     <!-- Full export: copy all files and update manifest -->
-    <create-directory path=".claude-plugin/skills/$SKILL_NAME/" />
-    <copy-files from="$IMPORT_PATH/" to=".claude-plugin/skills/$SKILL_NAME/" />
+    <create-directory path=".claude/skills/$SKILL_NAME/" />
+    <copy-files from="$IMPORT_PATH/" to=".claude/skills/$SKILL_NAME/" />
 
-    <update-manifest path=".claude-plugin/skills/$SKILL_NAME/doxy-codebase-manifest.json">
+    <update-manifest path=".claude/skills/$SKILL_NAME/doxy-codebase-manifest.json">
       <if-has-value var="LOCAL_SOURCE_PATH">
         <set-field name="source_path" value="$LOCAL_SOURCE_PATH" />
       </if-has-value>
@@ -172,24 +172,24 @@ Process the import based on the detected format.
 
   <if-format is="standalone">
     <!-- Standalone file: parse and create separate files -->
-    <create-directory path=".claude-plugin/skills/$SKILL_NAME/" />
+    <create-directory path=".claude/skills/$SKILL_NAME/" />
 
     <parse-standalone-file path="$IMPORT_PATH">
       <!-- Extract SKILL.md content -->
       <extract-section name="SKILL.md">
-        <write-file path=".claude-plugin/skills/$SKILL_NAME/SKILL.md" content="$section_content" />
+        <write-file path=".claude/skills/$SKILL_NAME/SKILL.md" content="$section_content" />
       </extract-section>
 
       <!-- Extract api-surface.md content if present -->
       <extract-section name="api-surface.md" optional="true">
         <if-present>
-          <write-file path=".claude-plugin/skills/$SKILL_NAME/api-surface.md" content="$section_content" />
+          <write-file path=".claude/skills/$SKILL_NAME/api-surface.md" content="$section_content" />
         </if-present>
       </extract-section>
     </parse-standalone-file>
 
     <!-- Create minimal manifest for standalone import -->
-    <create-manifest path=".claude-plugin/skills/$SKILL_NAME/doxy-codebase-manifest.json">
+    <create-manifest path=".claude/skills/$SKILL_NAME/doxy-codebase-manifest.json">
       {
         "name": "$SKILL_NAME",
         "source_path": "$LOCAL_SOURCE_PATH",
@@ -205,7 +205,7 @@ Process the import based on the detected format.
 Display completion message and usage instructions.
 
 <output>
-Import complete: .claude-plugin/skills/$SKILL_NAME/
+Import complete: .claude/skills/$SKILL_NAME/
 
 The skill is now available. Claude will use it when relevant.
 

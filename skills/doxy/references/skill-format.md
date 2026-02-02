@@ -109,7 +109,7 @@ Use tables for APIs, options, or comparisons:
 ### Single Topic
 
 ```
-.claude-plugin/skills/library-name/
+.claude/skills/library-name/
 ├── doxy-manifest.json
 └── topic/
     └── SKILL.md
@@ -118,7 +118,7 @@ Use tables for APIs, options, or comparisons:
 ### Multi-Page Documentation
 
 ```
-.claude-plugin/skills/library-name/
+.claude/skills/library-name/
 ├── doxy-manifest.json
 ├── getting-started/
 │   └── SKILL.md

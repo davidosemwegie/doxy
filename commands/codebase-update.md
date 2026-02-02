@@ -10,11 +10,11 @@ This command refreshes an existing architecture skill.
 
 ### 1. Parse Arguments
 
-Get skill name from `$ARGUMENTS`. If no name provided, use AskUserQuestion to ask which skill to update (list available skills from `.claude-plugin/skills/*-arch/`).
+Get skill name from `$ARGUMENTS`. If no name provided, use AskUserQuestion to ask which skill to update (list available skills from `.claude/skills/*-arch/`).
 
 ### 2. Validate Skill Exists
 
-Check for `.claude-plugin/skills/[name]-arch/doxy-codebase-manifest.json`
+Check for `.claude/skills/[name]-arch/doxy-codebase-manifest.json`
 
 If not found, report error and suggest using `/doxy:codebase` instead.
 
@@ -73,4 +73,4 @@ If manifest.monorepo.type is not null:
 ### 9. Tell User
 
 - The update is running in the background
-- Skills will be updated in `.claude-plugin/skills/[name]-arch/`
+- Skills will be updated in `.claude/skills/[name]-arch/`

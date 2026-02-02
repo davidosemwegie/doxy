@@ -153,7 +153,7 @@ export default define.page(async function Home(_ctx) {
               <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
                 <p>→ Crawling react.dev...</p>
                 <p>→ Found 47 documentation pages</p>
-                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/react/</span></p>
+                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude/skills/react/</span></p>
               </div>
             </div>
             <div class="terminal-box p-4 sm:p-5 overflow-x-auto font-mono">
@@ -168,7 +168,7 @@ export default define.page(async function Home(_ctx) {
               <div class="mt-3 pt-3 border-t border-[var(--border-color)] text-sm text-[var(--text-muted)] space-y-1">
                 <p>→ Analyzing TypeScript codebase...</p>
                 <p>→ Detected monorepo with 8 packages</p>
-                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude-plugin/skills/api-arch/</span></p>
+                <p>→ Skills in <span class="text-[var(--text-secondary)]">.claude/skills/api-arch/</span></p>
               </div>
             </div>
           </div>

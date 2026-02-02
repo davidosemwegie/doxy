@@ -6,7 +6,7 @@ List all doxy-generated skills with their source URLs.
 
 ## Step 1: Find All Doxy Manifests
 
-Use Glob to find all doxy manifest files with pattern: `.claude-plugin/skills/*/doxy-manifest.json`
+Use Glob to find all doxy manifest files with pattern: `.claude/skills/*/doxy-manifest.json`
 
 ## Step 2: Read Each Manifest
 

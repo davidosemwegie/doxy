@@ -13,7 +13,7 @@ Export an architecture skill for use in another repository.
 Get the skill name from `$ARGUMENTS`.
 
 If no skill name provided:
-- Use `Glob` to find available skills matching `.claude-plugin/skills/*-arch/`
+- Use `Glob` to find available skills matching `.claude/skills/*-arch/`
 - Use `AskUserQuestion` to ask which skill to export:
   - Question: "Which skill would you like to export?"
   - Header: "Available Skills"
@@ -23,12 +23,12 @@ If no skill name provided:
 
 Check if the skill exists by looking for:
 ```
-.claude-plugin/skills/[name]-arch/doxy-codebase-manifest.json
+.claude/skills/[name]-arch/doxy-codebase-manifest.json
 ```
 
 If not found:
 - Report error: "Skill '[name]' not found."
-- List available skills from `.claude-plugin/skills/*-arch/`
+- List available skills from `.claude/skills/*-arch/`
 - Stop execution
 
 ### 3. Ask Export Format
@@ -62,7 +62,7 @@ Based on the selected format:
 #### Full Copy Format
 
 1. Create destination directory
-2. Copy all files from `.claude-plugin/skills/[name]-arch/` to destination
+2. Copy all files from `.claude/skills/[name]-arch/` to destination
 3. Read and modify `doxy-codebase-manifest.json`:
    - Remove the `source_path` field (absolute paths don't transfer)
    - Add `exported_at` with current ISO-8601 timestamp
