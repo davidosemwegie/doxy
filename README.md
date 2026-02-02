@@ -22,12 +22,12 @@ npx skills add davidosemwegie/doxy
 ### From Documentation
 
 ```
-/doxy <documentation-url>
+/doxy:url <documentation-url>
 ```
 
 Example:
 ```
-/doxy https://animejs.com/documentation
+/doxy:url https://animejs.com/documentation
 ```
 
 ### From Codebase
@@ -47,7 +47,7 @@ Example:
 
 | Command | Description |
 |---------|-------------|
-| `/doxy <url>` | Generate skills from a documentation URL |
+| `/doxy:url <url>` | Generate skills from a documentation URL |
 | `/doxy:init` | Interactive setup - asks for name and URL |
 | `/doxy:list` | List all doxy-generated skills |
 | `/doxy:update <name> [url]` | Refresh a skill (optionally with new URL) |

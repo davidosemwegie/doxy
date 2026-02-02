@@ -145,7 +145,7 @@ export default define.page(async function Home(_ctx) {
               <p class="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wider">From docs</p>
               <code class="block text-sm whitespace-nowrap">
                 <span class="text-[var(--text-muted)]">$</span>{" "}
-                <span class="text-[var(--text-primary)]">/doxy</span>{" "}
+                <span class="text-[var(--text-primary)]">/doxy:url</span>{" "}
                 <span class="text-[var(--text-secondary)]">
                   https://react.dev/reference
                 </span>
@@ -184,7 +184,7 @@ export default define.page(async function Home(_ctx) {
           <p class="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-3 mt-6">Documentation</p>
           <div class="space-y-2 mb-6">
             {[
-              { cmd: "/doxy <url>", desc: "Generate skills from docs" },
+              { cmd: "/doxy:url <url>", desc: "Generate skills from docs" },
               { cmd: "/doxy:init", desc: "Interactive setup" },
               { cmd: "/doxy:update <name>", desc: "Re-crawl from source" },
             ].map((item) => (
